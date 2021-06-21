@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by G3126_ShootingGame.rc
+// Used by G3126Shooting.rc
 //
 
 // Next default values for new objects

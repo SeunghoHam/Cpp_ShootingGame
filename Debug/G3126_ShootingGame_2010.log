@@ -1,7 +1,0 @@
-﻿  G3126_ShootingGame.cpp
-C:\Users\xldgh\Desktop\Cpp_ShootingGame\G3126_ShootingGame.cpp(89,5): warning C4007: 'wWinMain': '__stdcall'이어야 합니다.
-Character.obj : warning LNK4075: '/EDITANDCONTINUE'이(가) '/SAFESEH' 사양으로 인해 무시됩니다.
-G3126_ShootingGame.obj : error LNK2019: "void __cdecl GameUpdate(void)" (?GameUpdate@@YAXXZ)_wWinMain@16 함수에서 참조되는 확인할 수 없는 외부 기호
-G3126_ShootingGame.obj : error LNK2019: "void __cdecl GameRender(void)" (?GameRender@@YAXXZ)"void __cdecl Render(void)" (?Render@@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-G3126_ShootingGame.obj : error LNK2019: "void __cdecl GameRelease(void)" (?GameRelease@@YAXXZ)"void __cdecl Cleanup(void)" (?Cleanup@@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-C:\Users\xldgh\Desktop\Cpp_ShootingGame\Debug\G3126_ShootingGame.exe : fatal error LNK1120: 3개의 확인할 수 없는 외부 참조입니다.
