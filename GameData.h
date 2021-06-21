@@ -41,5 +41,7 @@ struct Pat
 
 struct Pat_Info
 {
-
+	INT Count; // 
+	D3DXVECTOR3 StartPosition; // 패턴 시작 좌표
+	Pat Pat[4]; // 패턴들을 담고 있는 정보
 };

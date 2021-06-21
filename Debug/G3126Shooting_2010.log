@@ -1,3 +1,5 @@
-﻿  G3126Shooting.cpp
-C:\Users\xldgh\Desktop\Cpp_ShootingGame\G3126Shooting.cpp(113): warning C4700: 초기화되지 않은 'msg' 지역 변수를 사용했습니다.
-  G3126Shooting_2010.vcxproj -> C:\Users\xldgh\Desktop\Cpp_ShootingGame\Debug\G3126Shooting.exe
+﻿  Character.cpp
+Character.obj : warning LNK4075: '/EDITANDCONTINUE'이(가) '/SAFESEH' 사양으로 인해 무시됩니다.
+Character.obj : error LNK2001: 확인할 수 없는 외부 기호 "public: static struct ID3DXSprite * GameBase::_pSprite" (?_pSprite@GameBase@@2PAUID3DXSprite@@A)
+Game.obj : error LNK2001: 확인할 수 없는 외부 기호 "public: static float GameBase::t" (?t@GameBase@@2MA)
+C:\Users\xldgh\Desktop\Cpp_ShootingGame\Debug\G3126Shooting.exe : fatal error LNK1120: 2개의 확인할 수 없는 외부 참조입니다.

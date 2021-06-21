@@ -109,8 +109,8 @@ INT WINAPI wWinMain( HINSTANCE hInst, HINSTANCE, LPWSTR, INT )
         UpdateWindow( hWnd );
 
         // Enter the message loop
-        MSG msg;
-        //ZeroMemory(msg.message, sizeof(msg);
+        MSG msg = {0,};
+        //ZeroMemory(&msg, sizeof(msg));
         while (msg.message != WM_QUIT)
         {
             if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))

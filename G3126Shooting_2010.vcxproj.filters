@@ -16,9 +16,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="G3126Shooting.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameData.h" />
+    <ClInclude Include="GameBase.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
