@@ -1,6 +1,2 @@
-﻿  Enemy.cpp
-C:\Users\xldgh\Desktop\Cpp_ShootingGame\Enemy.cpp(55,15): warning C4244: '=': 'INT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  main.cpp
-  코드를 생성하고 있습니다...
-Character.obj : warning LNK4075: '/EDITANDCONTINUE'이(가) '/SAFESEH' 사양으로 인해 무시됩니다.
+﻿  main.cpp
   G3126Shooting_2010.vcxproj -> C:\Users\xldgh\Desktop\Cpp_ShootingGame\Debug\G3126Shooting.exe

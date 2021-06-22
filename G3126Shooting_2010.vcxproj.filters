@@ -21,6 +21,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Explode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameData.h" />
@@ -29,6 +31,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Explode.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

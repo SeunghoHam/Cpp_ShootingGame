@@ -1,4 +1,8 @@
 #include <d3d9.h>
+#include"GameData.h"
+#include"GameBase.h"
+#include"Character.h"
+#include"Game.h"
 #pragma warning( disable : 4996 ) // disable deprecated warning 
 #include <strsafe.h>
 #pragma warning( default : 4996 ) 
@@ -28,6 +32,8 @@ HRESULT InitD3D( HWND hWnd )
     }
 
     // Device state would normally be set here
+    D3DXCreateSprite(g_pd3dDevice, &GameBase::_pSprite); // 스프라이트 생성을 winapi Init 함수에서 한다
+    GameInit();
 
     return S_OK;
 }
@@ -35,6 +41,7 @@ HRESULT InitD3D( HWND hWnd )
 
 VOID Cleanup()
 {
+    GameRelease(); // Cleanup 함수에서 GameRelase
     if( g_pd3dDevice != NULL )
         g_pd3dDevice->Release();
 
@@ -54,7 +61,9 @@ VOID Render()
     if( SUCCEEDED( g_pd3dDevice->BeginScene() ) )
     {
         // Rendering of scene objects can happen here
-
+        GameBase::_pSprite->Begin(D3DXSPRITE_ALPHABLEND);
+        GameRender();
+        GameBase::_pSprite->End();
         // End the scene
         g_pd3dDevice->EndScene();
     }
@@ -71,11 +80,7 @@ LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
             Cleanup();
             PostQuitMessage( 0 );
             return 0;
-
-        case WM_PAINT:
-            Render();
-            ValidateRect( hWnd, NULL );
-            return 0;
+        // case WM_PAINT 제거. (sprite로 그릴거기 때문에 필요가 없다)
     }
 
     return DefWindowProc( hWnd, msg, wParam, lParam );
@@ -97,8 +102,8 @@ INT WINAPI wWinMain( HINSTANCE hInst, HINSTANCE, LPWSTR, INT )
     RegisterClassEx( &wc );
 
     // Create the application's window
-    HWND hWnd = CreateWindow( L"D3D Tutorial", L"D3D Tutorial 01: G3126Shooting",
-                              WS_OVERLAPPEDWINDOW, 100, 100, 300, 300,
+    HWND hWnd = CreateWindow( L"D3D Tutorial", L"G3126 ShootingGame",
+                              WS_OVERLAPPEDWINDOW, SCREEN_WIDTH, SCREEN_HEIGHT, 300, 300,
                               NULL, NULL, wc.hInstance, NULL );
 
     // Initialize Direct3D
@@ -120,13 +125,14 @@ INT WINAPI wWinMain( HINSTANCE hInst, HINSTANCE, LPWSTR, INT )
             }
             else
             {
+                GameUpdate(); // 정지상태가 아닐 때 렌더와 업데이트를 한다.
                 Render();
             }
         }
        
     }
 
-    UnregisterClass( L"D3D Tutorial", wc.hInstance );
+    UnregisterClass( L"G3126 ShootingGame", wc.hInstance );
     return 0;
 }
 
