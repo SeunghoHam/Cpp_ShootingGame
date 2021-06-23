@@ -1,2 +1,3 @@
-﻿  main.cpp
+﻿  Game.cpp
+C:\Users\xldgh\Desktop\Cpp_ShootingGame\Game.cpp(58,102): warning C4245: '인수': 'int'에서 'UINT'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
   G3126Shooting_2010.vcxproj -> C:\Users\xldgh\Desktop\Cpp_ShootingGame\Debug\G3126Shooting.exe

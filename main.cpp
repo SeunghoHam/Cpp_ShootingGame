@@ -1,4 +1,5 @@
 #include <d3d9.h>
+#include <d3dx9.h>
 #include"GameData.h"
 #include"GameBase.h"
 #include"Character.h"
@@ -103,7 +104,7 @@ INT WINAPI wWinMain( HINSTANCE hInst, HINSTANCE, LPWSTR, INT )
 
     // Create the application's window
     HWND hWnd = CreateWindow( L"D3D Tutorial", L"G3126 ShootingGame",
-                              WS_OVERLAPPEDWINDOW, SCREEN_WIDTH, SCREEN_HEIGHT, 300, 300,
+                              WS_OVERLAPPEDWINDOW, 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT,
                               NULL, NULL, wc.hInstance, NULL );
 
     // Initialize Direct3D

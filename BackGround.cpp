@@ -19,7 +19,6 @@ VOID BackGround::Update()
 
 VOID BackGround::InitPosition(FLOAT position)
 {
-
     startPosition = position;
     _image.position.y = position;
 }
