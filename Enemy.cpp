@@ -55,9 +55,9 @@ VOID Enemy::SetHp(INT hp)
 	_proper.Hp = hp;
 }
 
-VOID Enemy::SetPositionX(FLOAT x)
+VOID Enemy::SetPositionY(FLOAT y)
 {
-	_image.position.x = x;
+	_image.position.y = y;
 }
 
 VOID Enemy::SetVisible(BOOL visible)
@@ -65,19 +65,19 @@ VOID Enemy::SetVisible(BOOL visible)
 	_image.visible = visible;
 }
 
-VOID Enemy::Init(std::wstring _filename)
+VOID Enemy::Init()
 {
-	//srand(time(NULL)); // 이거 어디서 쓰는지 찾아봐야댐
+	srand(time(NULL)); // 이거 어디서 쓰는지 찾아봐야댐
 	nType = 1;
-	D3DXCreateTextureFromFile(g_pd3dDevice, _filename.c_str(), &_image.texture);
-	D3DXGetImageInfoFromFile(_filename.c_str(), &_image.img_info);
+	D3DXCreateTextureFromFile(g_pd3dDevice, L"Resources/Enemy.png", &_image.texture);
+	D3DXGetImageInfoFromFile(L"Resources/Enemy.png", &_image.img_info);
 	_image.visible = TRUE;
 	_image.rect = { 0,0,(LONG)_image.img_info.Width, (LONG)_image.img_info.Height };
 	_image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f, 0 };
-	_image.position =  { 0,-100,0 };
+	_image.position =  { -100,0,0 };
 	_image.collisionRange = 20.0f;
 	_proper.Hp = 2;
-	_proper.Speed = 10;
+	_proper.Speed = 5;
 	_proper.OldTime = timeGetTime();
 	_proper.MoveTime = 1000 / 30;
 
@@ -94,7 +94,7 @@ VOID Enemy::Update(VOID)
 	if (CurTime - _proper.OldTime > _proper.MoveTime)
 	{
 		_proper.OldTime = CurTime;
-		_image.position.y += _proper.Speed;
+		_image.position.x -= _proper.Speed; // y -> x로 변경 오른쪽에서 왼쪽으로 적 이동
 	}
 	return VOID();
 }

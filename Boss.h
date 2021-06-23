@@ -47,20 +47,20 @@ public:
 	VOID PatInit();
 
 	// {보스 관련} [초기화] [업데이트] [그리기] [해제] 함수
-	VOID Init(std::wstring _filename);
+	VOID Init();
 	VOID Update();
 	VOID Draw();
 	VOID Release();
 
 	// {보스 미사일 관련} [초기화] [업데이트] [그리기] [해제] 함수
-	VOID MissileInit(std::wstring _filename);
+	VOID MissileInit();
 	VOID MissileUpdate();
 	VOID MissileDraw();
 	VOID MissileRelease();
 
 
 	// {보스 게이지 바 관련} [초기화] [업데이트] [그리기] [해제] 함수
-	VOID GaugeInit(std::wstring _filename);
+	VOID GaugeInit();
 	VOID GaugeUpdate();
 	VOID GaugeDraw();
 	VOID GaugeRelease();

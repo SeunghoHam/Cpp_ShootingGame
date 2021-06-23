@@ -25,11 +25,11 @@ public:
 
 	VOID Damaged();
 	VOID SetHp(INT hp);
-	VOID SetPositionX(FLOAT x);
+	VOID SetPositionY(FLOAT y);
 
 	VOID SetVisible(BOOL visible);
 
-	VOID Init(std::wstring _filename);
+	VOID Init();
 	VOID Update(VOID);
 	VOID Draw(VOID);
 	

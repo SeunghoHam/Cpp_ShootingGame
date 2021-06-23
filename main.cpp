@@ -103,8 +103,10 @@ INT WINAPI wWinMain( HINSTANCE hInst, HINSTANCE, LPWSTR, INT )
     RegisterClassEx( &wc );
 
     // Create the application's window
-    HWND hWnd = CreateWindow( L"D3D Tutorial", L"G3126 ShootingGame",
-                              WS_OVERLAPPEDWINDOW, 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT,
+    HWND hWnd = CreateWindow( L"D3D Tutorial", L"ShootingGame",
+                              //WS_OVERLAPPEDWINDOW
+                                WS_POPUP
+                            , 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT,
                               NULL, NULL, wc.hInstance, NULL );
 
     // Initialize Direct3D

@@ -11,14 +11,14 @@ BackGround::~BackGround()
 VOID BackGround::Update()
 {
     // 배경이 반복되게 하기
-    _image.position.y += _proper.Speed;
-    if (_image.position.y > startPosition + _image.img_info.Height)
-        _image.position.y = startPosition;
+    _image.position.x -= _proper.Speed;
+    if (_image.position.x > startPosition + _image.img_info.Width)
+        _image.position.x = startPosition;
     return VOID();
 }
 
 VOID BackGround::InitPosition(FLOAT position)
 {
     startPosition = position;
-    _image.position.y = position;
+    _image.position.x = position;
 }
