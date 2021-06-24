@@ -69,12 +69,15 @@ VOID Enemy::Init()
 {
 	srand(time(NULL)); // 이거 어디서 쓰는지 찾아봐야댐
 	nType = 1;
-	D3DXCreateTextureFromFile(g_pd3dDevice, L"Resources/Enemy.png", &_image.texture);
+	D3DXCreateTextureFromFileEx(g_pd3dDevice, L"Resources/Enemy.png",
+		D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 1, 0,
+		D3DFORMAT::D3DFMT_UNKNOWN, D3DPOOL::D3DPOOL_MANAGED,
+		D3DX_FILTER_NONE, 0, 0, 0, 0, &_image.texture);
 	D3DXGetImageInfoFromFile(L"Resources/Enemy.png", &_image.img_info);
 	_image.visible = TRUE;
 	_image.rect = { 0,0,(LONG)_image.img_info.Width, (LONG)_image.img_info.Height };
 	_image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f, 0 };
-	_image.position =  { -100,0,0 };
+	_image.position =  { 800,300,0 };
 	_image.collisionRange = 20.0f;
 	_proper.Hp = 2;
 	_proper.Speed = 5;

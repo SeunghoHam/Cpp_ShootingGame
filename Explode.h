@@ -20,7 +20,7 @@ public:
 
 	VOID SetVisible(BOOL visible);
 	VOID SetPosition(D3DXVECTOR3 position);
-	VOID Init(std::wstring _filename);
+	VOID Init();
 	VOID Update(VOID);
 	VOID Draw(VOID);
 };

@@ -5,6 +5,7 @@
 #include"BackGround.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"GroupEnemy.h"
 #include"Boss.h"
 // UI header
 
@@ -15,7 +16,10 @@ BackGround g_BG2;
 
 Player g_Player;
 
+GroupEnemy g_GroupEnemy;
 Boss g_Boss;
+
+
 
 INT g_Score;
 DWORD dwOldTime;
@@ -25,6 +29,7 @@ VOID GameInit()
 	BGInit(); // 배경 초기화
 
 	g_Boss.Init();
+	g_Boss.PatInit(); // 패턴 정보 확인 필요함 ■■■■■■■
 	g_Player.Init();
 }
 
@@ -37,6 +42,7 @@ VOID GameUpdate()
 	// 플레이어, 배경, 적 보스 업데이트
 	BGUpdate();
 	g_Player.Update();
+	g_GroupEnemy.Update();
 	g_Boss.Update();
 }
 
@@ -48,6 +54,7 @@ VOID GameRender()
 
 	// 캐릭터 랜더
 	g_Player.Draw();
+	g_GroupEnemy.Draw();
 	//g_Boss.Draw();
 
 
@@ -88,7 +95,7 @@ VOID BGInit()
 	// 이미지 할당 시켜줘ㅏ야함 ex) g_SeaBG.SetImage(SeabgImage);
 	g_BG1.SetImage(bgImage1);
 	g_BG1.SetProper(bgProper1);
-
+	g_BG1.InitPosition(800);
 
 	// ********************************** //
 
@@ -111,6 +118,7 @@ VOID BGInit()
 	// 이미지 할당 시켜줘ㅏ야함 ex) g_SeaBG.SetImage(SeabgImage);
 	g_BG2.SetImage(bgImage2);
 	g_BG2.SetProper(bgProper2);
+	g_BG2.InitPosition(800);
 }
 
 VOID BGUpdate()

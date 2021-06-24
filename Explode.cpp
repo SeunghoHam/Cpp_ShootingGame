@@ -20,13 +20,13 @@ VOID Explode::SetPosition(D3DXVECTOR3 position)
     _image.position = position;
 }
 
-VOID Explode::Init(std::wstring _filename)
+VOID Explode::Init()
 {
-    D3DXCreateTextureFromFileEx(g_pd3dDevice, _filename.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2,
+    D3DXCreateTextureFromFileEx(g_pd3dDevice, L"Resources/Explode.png", D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2,
         1, 0, D3DFORMAT::D3DFMT_UNKNOWN, D3DPOOL::D3DPOOL_MANAGED,
         D3DX_FILTER_NONE, 0, 0, 0, 0, &_image.texture);
 
-    D3DXGetImageInfoFromFile(_filename.c_str(), &_image.img_info);
+    D3DXGetImageInfoFromFile(L"Resources/Explode.png", &_image.img_info);
 
     // Explode 스프라이트 상세설정
     FrameIndex = 0;
