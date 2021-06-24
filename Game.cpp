@@ -1,3 +1,4 @@
+#include<d3dx9.h>
 #include"Game.h"
 #include"GameData.h"
 #include"GameBase.h"
@@ -18,7 +19,7 @@ Player g_Player;
 
 GroupEnemy g_GroupEnemy;
 Boss g_Boss;
-
+// UI
 
 
 INT g_Score;
@@ -31,6 +32,7 @@ VOID GameInit()
 	g_Boss.Init();
 	g_Boss.PatInit(); // 패턴 정보 확인 필요함 ■■■■■■■
 	g_Player.Init();
+	g_GroupEnemy.Init();
 }
 
 VOID GameUpdate()
