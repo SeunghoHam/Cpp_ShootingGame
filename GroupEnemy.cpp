@@ -124,7 +124,7 @@ VOID EnemyMissile::Init()
 	_image.visible = TRUE;
 	_image.rect = { 0,0,(LONG)_image.img_info.Width, (LONG)_image.img_info.Height };
 	_image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f , 0};
-	_image.position = { SCREEN_WIDTH + 100, 0 ,0 };
+	_image.position = { SCREEN_WIDTH - 100, 0 ,0 };
 
 	nLife = 0;
 	return VOID();
