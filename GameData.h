@@ -17,6 +17,7 @@ struct Image
 
 	FLOAT collisionRange;
 	FLOAT alpha;
+
 };
 
 // 능력치 정보

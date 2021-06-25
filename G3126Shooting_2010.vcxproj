@@ -381,10 +381,12 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Explode.cpp" />
     <ClCompile Include="GroupEnemy.cpp" />
+    <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
@@ -398,8 +400,10 @@
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GroupEnemy.h" />
+    <ClInclude Include="HitEffect.h" />
     <ClInclude Include="Player.h" />
     <CLInclude Include="resource.h" />
+    <ClInclude Include="UI.h" />
     <ResourceCompile Include="G3126Shooting.rc" />
   </ItemGroup>
   <ItemGroup>

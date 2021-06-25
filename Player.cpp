@@ -1,9 +1,14 @@
 #include "Player.h"
+#include "GroupEnemy.h"
+#include "Explode.h"
+#include "Boss.h"
 
 extern LPDIRECT3DDEVICE9   g_pd3dDevice;
-// 그룹 에너미
-// 폭파이펙트
 extern INT g_Score;
+extern GroupEnemy g_GroupEnemy;
+extern Explode explode;
+extern Boss g_Boss;
+
 
 Player::Player()
 {
@@ -52,7 +57,7 @@ VOID Player::Init(VOID)
 											(LONG)playerMissile[0]._image.img_info.Height };
 	playerMissile[0]._image.center = { playerMissile[0]._image.img_info.Width * 0.5f, playerMissile[0]._image.img_info.Height * 0.5f, 0 };
 	playerMissile[0]._nLife = 0;
-	playerMissile[0]._image.collisionRange = 20;
+	playerMissile[0]._image.collisionRange = 20.0f;
 	for (int i = 1; i < myMissile; i++) 
 	{
 		playerMissile[i] = playerMissile[0];
@@ -61,6 +66,8 @@ VOID Player::Init(VOID)
 	FireTime = 200; // 발사속도 설정
 
 	return VOID();
+
+	
 }
 
 VOID Player::Update(VOID)
@@ -122,8 +129,50 @@ VOID Player::Update(VOID)
 				else
 					playerMissile[i]._nLife = 0;
 			}
-			// 살아있는 미사일 중 적기와 충돌
+			 // 살아있는 미사일 중 적기와 충돌
+			for (INT j = 0; j < ENEMY_NUM; j++) // 적기 확인을 위한 for문 돌리기
+			{
+				if (playerMissile[i].Collision(playerMissile[i]._image, g_GroupEnemy.Enemy[j].GetImage()))
+				{
+					playerMissile[i]._nLife = 0;
+					g_GroupEnemy.Enemy[j].Damaged();
 
+					if (g_GroupEnemy.Enemy[j].GetProper().Hp <= 0)
+					{
+						explode.SetPosition(g_GroupEnemy.Enemy[j].GetImage().position);
+						g_GroupEnemy.Enemy[j].SetPositionY(100); // 이미지 잔해의 위치를 변경시켜서 이펙트 버그 안나게 한다
+						explode.SetVisible(TRUE); // 이펙트 보이게
+						g_Score += 1; 
+						explode.StartTime = CurTime;
+						explode.FrameOldTime = CurTime;
+					}
+				}
+			}
+			// 살아있는 ㅣㅁ사일 중 보스와 충돌
+			if (playerMissile[i].Collision(playerMissile[i]._image, g_Boss.GetImage()))
+			{
+				playerMissile[i]._nLife = 0;
+				g_Boss.Damaged();
+				
+				// Hit Effect 
+				explode.SetPosition(g_Boss.GetImage().position);
+				
+
+
+				if (g_Boss.GetProper().Hp <= 0)
+				{
+					for (INT j = 0; j < 30; j++)
+					{
+						g_Boss.BossMissile.sMissile[j].nLife = 0; // 보스가 죽으면 보스의 미사일들도 사라져야함
+					}
+					explode.SetPosition(g_Boss.GetImage().position);
+					explode.SetVisible(TRUE);
+					
+					g_Score += 10;
+					explode.StartTime = CurTime;
+					explode.FrameOldTime = CurTime;
+				}
+			}
 		}
 	}
 	

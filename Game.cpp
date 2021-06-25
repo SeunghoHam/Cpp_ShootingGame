@@ -8,7 +8,7 @@
 #include"Enemy.h"
 #include"GroupEnemy.h"
 #include"Boss.h"
-// UI header
+#include"UI.h"
 
 extern LPDIRECT3DDEVICE9 g_pd3dDevice;
 
@@ -19,7 +19,8 @@ Player g_Player;
 
 GroupEnemy g_GroupEnemy;
 Boss g_Boss;
-// UI
+
+UI testUI;
 
 
 INT g_Score;
@@ -56,12 +57,13 @@ VOID GameRender()
 
 	// 캐릭터 랜더
 	g_Player.Draw();
-	g_GroupEnemy.Draw();
-	//g_Boss.Draw();
+	g_GroupEnemy.Draw(); // Enemy Draw
+	g_Boss.Draw(); // Boss Draw
 
 
 	// 캐릭터 미사일 드로우
 	g_Player.MissileDraw();
+
 }
 
 VOID GameRelease()

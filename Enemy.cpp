@@ -79,7 +79,7 @@ VOID Enemy::Init()
 	_image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f, 0 };
 	_image.position =  { 800,300,0 };
 	_image.collisionRange = 20.0f;
-	_proper.Hp = 2;
+	_proper.Hp = 1;
 	_proper.Speed = 5;
 	_proper.OldTime = timeGetTime();
 	_proper.MoveTime = 1000 / 30;

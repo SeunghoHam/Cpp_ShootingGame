@@ -55,7 +55,7 @@ VOID Boss::Init()
 	_image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f, 0 };
 	//_image.center = { 0,0,0 };
 	_image.position = { 570, 300, 0 }; // 시작좌표
-	_image.collisionRange = 50.0f; // 보스 콜리전 크기
+	_image.collisionRange = 40.0f; // 보스 콜리전 크기
 
 	_proper.Hp = 10; // 보스 체력
 	_proper.Speed = 10;

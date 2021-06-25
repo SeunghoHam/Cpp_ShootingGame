@@ -23,5 +23,9 @@ public:
 	VOID Init();
 	VOID Update(VOID);
 	VOID Draw(VOID);
+
+	VOID effectInit();
+	VOID effectUpdate();
+	VOID effectDraw();
 };
 

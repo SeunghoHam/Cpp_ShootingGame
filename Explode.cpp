@@ -40,7 +40,7 @@ VOID Explode::Init()
     _image.visible = FALSE;
     _image.rect = { 0,0,FrameWidth, FrameHeight };
     _image.center = { _image.img_info.Width / 6 * 0.5f, _image.img_info.Height / 6 *0.5f, 0 };
-    _image.position = { 0, -100, 0 };
+    _image.position = { 0, 0, 0 }; // 원래값 0, -100,0
 
     StayTime = 100 * 6;
     return VOID();
@@ -75,6 +75,32 @@ VOID Explode::Draw(VOID)
         _pSprite->Draw(_image.texture, &_image.rect, &_image.center, &_image.position, D3DXCOLOR(1.0f, 1.0f, 1.0f, 
             _image.alpha));
         // 이거 안보이면 0xfffffffff 으로 바꿔야할듯
+    }
+    return VOID();
+}
+
+VOID Explode::effectInit()
+{
+    D3DXCreateTextureFromFile( g_pd3dDevice, L"Resources/HitEffect.png", &_image.texture);
+    D3DXGetImageInfoFromFile(L"Resources/HitEffect.png", &_image.img_info);
+    _image.position = { 0,0,0 };
+    _image.visible = FALSE;
+
+
+    return VOID();
+}
+
+VOID Explode::effectUpdate()
+{
+    // 0.2초쯤 뒤에 visible = false 로 변경시키는 코드 작성해야 됨
+    return VOID();
+}
+
+VOID Explode::effectDraw()
+{
+    if (_image.visible == TRUE)
+    {
+        _pSprite->Draw(_image.texture, &_image.rect, &_image.center, &_image.position, D3DXCOLOR(1.0f, 1.0f, 1.0f, _image.alpha));
     }
     return VOID();
 }

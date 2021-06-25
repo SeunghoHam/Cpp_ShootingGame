@@ -25,6 +25,8 @@
     <ClCompile Include="Explode.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="GroupEnemy.cpp" />
+    <ClCompile Include="HitEffect.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameData.h" />
@@ -37,6 +39,8 @@
     <ClInclude Include="Explode.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="GroupEnemy.h" />
+    <ClInclude Include="HitEffect.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
