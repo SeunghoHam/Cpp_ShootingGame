@@ -1,10 +1,10 @@
 #include "GroupEnemy.h"
 #include "Explode.h" // GroupEnemy에서 관리하는 Enemy에서 Explode 이펙트를 실행시킨다.
-#include <time.h>
+#include "Player.h"
 extern LPDIRECT3DDEVICE9 g_pd3dDevice;
-Explode explode;
-Enemy Star;
 
+Explode explode;
+extern Player g_Player;
 GroupEnemy::GroupEnemy() // 생성자
 {
 }
@@ -15,7 +15,7 @@ GroupEnemy::~GroupEnemy() // 소멸자
 
 VOID GroupEnemy::Init()
 {
-	EnemyIndex = 0;
+	EnemyIndex = 0; // 인데스 초기화
 	StartTime = timeGetTime();
 	for (INT i = 0; i < ENEMY_NUM; i++)
 	{
@@ -29,6 +29,7 @@ VOID GroupEnemy::Init()
 		m_EnemyMissile[i].Init();
 	}
 	explode.Init();
+
 	return VOID();
 }
 
@@ -38,9 +39,24 @@ VOID GroupEnemy::Update()
 
 
 	// 50 ~ 550 까지의 랜덤한 좌표 구하기
-	srand((unsigned int)time(NULL)); 
-	int num = rand();
-	// 적 출현
+	//srand((unsigned int)time(NULL)); 
+	//int num = rand();
+	//// 적 출현
+	//for (INT i = EnemyIndex; i < ENEMY_NUM; i++)
+	//{
+	//	if (Enemy[i].GetProper().Hp == 0)
+	//	{
+	//		if (CurTime - StartTime > Enemy[i].GetAppearTime())
+	//		{
+	//			Enemy[i].SetHp(5);
+	//			Enemy[i].SetPositionY((int)num % 500 + 50);
+	//			EnemyIndex++;
+	//		}
+	//		else
+	//			break;
+	//	}
+	//}
+	// 
 	for (INT i = EnemyIndex; i < ENEMY_NUM; i++)
 	{
 		if (Enemy[i].GetProper().Hp == 0)
@@ -48,13 +64,17 @@ VOID GroupEnemy::Update()
 			if (CurTime - StartTime > Enemy[i].GetAppearTime())
 			{
 				Enemy[i].SetHp(5);
-				Enemy[i].SetPositionY((int)num % 500 + 50);
-				EnemyIndex++;
+				Enemy[i].SetPositionY(rand() % 500 + 50);
+				EnemyIndex++; // 인덱스를 증가시킨다? 
 			}
 			else
 				break;
 		}
 	}
+
+
+
+
 	// 적 이동
 	for (INT i = 0; i < EnemyIndex; i++)
 	{
@@ -65,8 +85,27 @@ VOID GroupEnemy::Update()
 			if (CurTime - Enemy[i].GetMissileOldTime() > Enemy[i].GetMissileFireTime())
 			{
 				Enemy[i].SetMissileOldTime(CurTime);
+
+
 				for (INT j = 0; j < ENEMY_MISSILE; j++)
 				{
+					if (m_EnemyMissile[j].nLife == 1)
+					{
+						if (m_EnemyMissile[j].Collision(m_EnemyMissile[j]._image, g_Player.GetImage()))
+						{
+							m_EnemyMissile[j].nLife = 0;
+							g_Player.Damaged();
+						}
+					}
+
+					if (g_Player.GetProper().Hp <= 0)
+					{
+						explode.SetPosition(g_Player.GetImage().position);
+						explode.SetVisible(TRUE);
+						// 게임오버 상황
+						explode.StartTime = CurTime;
+						explode.FrameOldTime = CurTime;
+					}
 					if (m_EnemyMissile[j].nLife == 0) // EnemyMissile 충돌함
 					{
 						m_EnemyMissile[j].nLife = 1;
@@ -91,6 +130,11 @@ VOID GroupEnemy::Update()
 
 	// 폭발 업데이트
 	explode.Update();
+	return VOID();
+}
+
+VOID GroupEnemy::Targetting()
+{
 	return VOID();
 }
 
@@ -124,9 +168,16 @@ VOID EnemyMissile::Init()
 	_image.visible = TRUE;
 	_image.rect = { 0,0,(LONG)_image.img_info.Width, (LONG)_image.img_info.Height };
 	_image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f , 0};
-	_image.position = { SCREEN_WIDTH - 100, 0 ,0 };
+	_image.position = { 0, 0 ,0 };
+	_image.alpha = 1.0f;
+	_image.collisionRange = 32.0f;
+	nLife = 1;
 
-	nLife = 0;
+	//g_Player.SetPosition(); // 플레이어 좌표 가져옴
+
+	//playerPosition = g_Player.SetplayerPosition;
+
+	
 	return VOID();
 }
 
@@ -137,6 +188,11 @@ VOID EnemyMissile::Update()
 	{
 		OldTime = CurTime;
 		_image.position.x -= 10.0f; // EnemyMissile 의 발사속도
+		//_image.position = playerPosition;
+
+		//_image.position.x = playerPosition.x * 0.001f;
+		//_image.position.y = playerPosition.y * 0.001f;
+		_image.position = g_Player.GetPosition(_image.position);
 		if (_image.position.x < 0)
 		{
 			nLife = 0;

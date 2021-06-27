@@ -34,6 +34,9 @@ public:
 	BOSS_MISSILE_INFO BossMissile;	// 보스 미사일
 	Image BossGauge;				// 보스 게이지
 
+	BOOL BossDead;
+
+	
 
 	Boss();
 	~Boss();
@@ -48,6 +51,7 @@ public:
 
 	// {보스 관련} [초기화] [업데이트] [그리기] [해제] 함수
 	VOID Init();
+	VOID Turn(INT a);
 	VOID Update();
 	VOID Draw();
 	VOID Release();

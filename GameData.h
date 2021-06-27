@@ -30,7 +30,7 @@ struct Proper
 	DWORD OldTime; // 이전이동 시간 
 };
 
-enum DIRECT { DOWN_LEFT, LEFT, UP_LEFT };
+enum DIRECT { DOWN_LEFT, LEFT, UP_LEFT, DOWN, UP, SEMIDOWN};
 
 struct Pat
 {                                                                                 

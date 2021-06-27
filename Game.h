@@ -10,6 +10,3 @@ VOID PlayerInit();
 VOID EnemyInit();
 VOID MissileInit();
 VOID BGInit();
-
-VOID BGUpdate();
-VOID MissileUpdate();

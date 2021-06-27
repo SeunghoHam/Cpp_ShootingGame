@@ -2,6 +2,14 @@
 
 extern LPDIRECT3DDEVICE9 g_pd3dDevice;
 
+HitEffect::HitEffect()
+{
+}
+
+HitEffect::~HitEffect()
+{
+}
+
 VOID HitEffect::Setvisible(BOOL visible)
 {
     _image.visible = visible;
@@ -18,11 +26,11 @@ VOID HitEffect::Init()
 
     D3DXGetImageInfoFromFile(L"Resources/HitEffect.png", &_image.img_info);
 
-    _image.visible = FALSE;
+    _image.visible = TRUE;
     _image.rect = { 0,0, (LONG)_image.img_info.Width, (LONG)_image.img_info.Height };
     _image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f ,0 };
-    _image.position = { 100,100,0 };
-
+    _image.position = { 30,100,0 };
+    _image.alpha = 1.0f;
 
     StayTime = 200;
     return VOID();
@@ -31,10 +39,10 @@ VOID HitEffect::Init()
 VOID HitEffect::Update()
 {
     DWORD CurTime = timeGetTime();
-    if (CurTime - StartTime > StayTime)
-    {
-        _image.visible = FALSE;
-    }
+    //if (CurTime - StartTime > StayTime)
+    //{
+    //    _image.visible = FALSE;
+    //}
     return VOID();
 }
 

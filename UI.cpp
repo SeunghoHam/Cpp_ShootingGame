@@ -1,33 +1,34 @@
-#include "UI.h"
+#include "Ui.h"
 extern LPDIRECT3DDEVICE9 g_pd3dDevice;
 extern INT g_Score;
 
 
-VOID UI::Init()
+VOID Ui::Init()
 {
-    D3DXCreateFont(g_pd3dDevice, 40, 0, FW_HEAVY, 1, FALSE, // 40 = width, 0 = height
+    D3DXCreateFont(g_pd3dDevice, 40, 0, FW_HEAVY, 1, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
-        DEFAULT_CHARSET, DEFAULT_PITCH | FF_DONTCARE,
+        DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE,
         L"Impact", &font);
     return VOID();
 }
 
-VOID UI::Update()
+VOID Ui::Update()
 {
     return VOID();
 }
 
-VOID UI::Draw()
+VOID Ui::Draw()
 {
     char string[100];
-    RECT rt = { 10,10,0,0 };
+    RECT rt = { 10,40,0,0 };
     wsprintfA(string, "SCORE : %d", g_Score);
-    font->DrawTextA(GameBase::_pSprite, string, -1, &rt, // rt = rect
-        DT_NOCLIP, D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0));
+    font->DrawTextA(GameBase::_pSprite, string, -1, &rt,
+        DT_NOCLIP, D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f));
     return VOID();
 }
 
-VOID UI::Release()
+VOID Ui::Release()
 {
+    _pSprite->Release();
     return VOID();
 }

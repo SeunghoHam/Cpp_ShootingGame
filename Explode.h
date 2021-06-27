@@ -1,11 +1,20 @@
 #pragma once
 #include "Character.h"
-#include<string>
+class Hit : public Character
+{
+public:
+	Image _image;
+	DWORD HitStartTime;
+	DWORD HitStayTime;
+
+};
 class Explode : public Character
 {
 public:
 	Explode();
 	~Explode();
+
+	Hit hitEffect;
 
 	DWORD StartTime; // 이펙트 시작 시간
 	DWORD StayTime; // 이펙트 지속 시간
@@ -18,14 +27,19 @@ public:
 	DWORD FrameOldTime; // 이전 프레임이 그려진 시각 Old
 	DWORD FrameAniTime; // 프레임의 전환속도
 
+	
+
 	VOID SetVisible(BOOL visible);
 	VOID SetPosition(D3DXVECTOR3 position);
 	VOID Init();
 	VOID Update(VOID);
 	VOID Draw(VOID);
 
+	
 	VOID effectInit();
 	VOID effectUpdate();
 	VOID effectDraw();
+	VOID SethitEffectVisible(BOOL visible);
+	VOID SethitEffectPosition(D3DXVECTOR3 position);
 };
 

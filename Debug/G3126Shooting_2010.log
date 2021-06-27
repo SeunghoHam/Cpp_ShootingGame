@@ -1,5 +1,4 @@
-﻿  UI.cpp
-BackGround.obj : warning LNK4075: '/EDITANDCONTINUE'이(가) '/SAFESEH' 사양으로 인해 무시됩니다.
-Game.obj : error LNK2019: "public: __thiscall UI::UI(void)" (??0UI@@QAE@XZ)"void __cdecl `dynamic initializer for 'testUI''(void)" (??__EtestUI@@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-Game.obj : error LNK2019: "public: __thiscall UI::~UI(void)" (??1UI@@QAE@XZ)"void __cdecl `dynamic atexit destructor for 'testUI''(void)" (??__FtestUI@@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-C:\Users\xldgh\Desktop\Cpp_ShootingGame\Debug\G3126Shooting.exe : fatal error LNK1120: 2개의 확인할 수 없는 외부 참조입니다.
+﻿  GroupEnemy.cpp
+C:\Users\xldgh\Desktop\Cpp_ShootingGame\GroupEnemy.cpp(67,40): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xldgh\Desktop\Cpp_ShootingGame\GroupEnemy.cpp(165,101): warning C4245: '인수': 'int'에서 'UINT'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
+  G3126Shooting_2010.vcxproj -> C:\Users\xldgh\Desktop\Cpp_ShootingGame\Debug\G3126Shooting.exe

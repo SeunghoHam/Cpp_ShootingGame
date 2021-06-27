@@ -8,10 +8,16 @@
 #include"Enemy.h"
 #include"GroupEnemy.h"
 #include"Boss.h"
+#include"TimeGauge.h"
+#include"DrawEnd.h"
 #include"UI.h"
 
 extern LPDIRECT3DDEVICE9 g_pd3dDevice;
 
+enum GameState
+{
+	INGAME, SUCCESS, FAILED,
+};
 BackGround g_BG1;
 BackGround g_BG2;
 
@@ -19,12 +25,14 @@ Player g_Player;
 
 GroupEnemy g_GroupEnemy;
 Boss g_Boss;
+TimeGauge g_TimeGauge;
+Ui g_scoreUI;
 
-UI testUI;
-
+DrawEnd g_ending;
 
 INT g_Score;
 DWORD dwOldTime;
+VOID BGUpdate();
 VOID GameInit()
 {
 	// 플레이어, 배경, 적, 보스 초기화(Init)
@@ -34,6 +42,10 @@ VOID GameInit()
 	g_Boss.PatInit(); // 패턴 정보 확인 필요함 ■■■■■■■
 	g_Player.Init();
 	g_GroupEnemy.Init();
+	g_TimeGauge.Init();
+	g_ending.SuccessInit();
+	g_ending.FailedInit();
+	g_scoreUI.Init();
 }
 
 VOID GameUpdate()
@@ -41,12 +53,16 @@ VOID GameUpdate()
 	GameBase::t = (timeGetTime() - dwOldTime) * 0.001f;
 	dwOldTime = timeGetTime();
 
-	
 	// 플레이어, 배경, 적 보스 업데이트
-	BGUpdate();
-	g_Player.Update();
-	g_GroupEnemy.Update();
-	g_Boss.Update();
+	if (g_Boss.BossDead == FALSE && g_TimeGauge.GameOver == FALSE)
+	{
+		BGUpdate();
+		g_Player.Update();
+		g_GroupEnemy.Update();
+		g_Boss.Update();
+		g_TimeGauge.Update();
+
+	}
 }
 
 VOID GameRender()
@@ -63,7 +79,16 @@ VOID GameRender()
 
 	// 캐릭터 미사일 드로우
 	g_Player.MissileDraw();
+	
+	g_scoreUI.Draw();
+	// 타이머 그리기
+	g_TimeGauge.Draw();
 
+	if(g_TimeGauge.GameOver == TRUE)
+		g_ending.FailedDraw();
+
+	if (g_Boss.BossDead == TRUE)
+		g_ending.SuccessDraw();
 }
 
 VOID GameRelease()
@@ -145,3 +170,4 @@ VOID MissileUpdate()
 {
 	return VOID();
 }
+

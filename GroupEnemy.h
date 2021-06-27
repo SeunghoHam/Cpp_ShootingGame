@@ -11,6 +11,7 @@ public:
 	INT nLife;
 	DWORD OldTime;
 	DWORD MoveTime;
+	D3DXVECTOR3 playerPosition;
 	VOID Init();
 	VOID Update();
 	VOID Draw();
@@ -31,6 +32,7 @@ public:
 
 	VOID Init();
 	VOID Update();
+	VOID Targetting();
 	VOID Draw();
 
 };

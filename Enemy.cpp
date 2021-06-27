@@ -1,8 +1,10 @@
 #include "Enemy.h"
+#include "Player.h"
 #include<time.h>
 
 extern LPDIRECT3DDEVICE9 g_pd3dDevice;
 
+extern Player g_Player;
 Enemy::Enemy()
 {
 }
@@ -78,8 +80,8 @@ VOID Enemy::Init()
 	_image.rect = { 0,0,(LONG)_image.img_info.Width, (LONG)_image.img_info.Height };
 	_image.center = { _image.img_info.Width * 0.5f, _image.img_info.Height * 0.5f, 0 };
 	_image.position =  { 800,300,0 };
-	_image.collisionRange = 20.0f;
-	_proper.Hp = 1;
+	_image.collisionRange = 30.0f;
+	_proper.Hp = 2;
 	_proper.Speed = 5;
 	_proper.OldTime = timeGetTime();
 	_proper.MoveTime = 1000 / 30;
@@ -98,6 +100,17 @@ VOID Enemy::Update(VOID)
 	{
 		_proper.OldTime = CurTime;
 		_image.position.x -= _proper.Speed; // y -> x로 변경 오른쪽에서 왼쪽으로 적 이동
+	}
+
+
+	if (_proper.Hp >= 1)
+	{
+		if (Collision(_image, g_Player.GetImage()))
+		{
+			g_Player.Damaged();
+			_proper.Hp = 0;
+
+		}
 	}
 	return VOID();
 }

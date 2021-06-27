@@ -26,7 +26,9 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="GroupEnemy.cpp" />
     <ClCompile Include="HitEffect.cpp" />
-    <ClCompile Include="UI.cpp" />
+    <ClCompile Include="TimeGauge.cpp" />
+    <ClCompile Include="DrawEnd.cpp" />
+    <ClCompile Include="Ui.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameData.h" />
@@ -40,7 +42,9 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="GroupEnemy.h" />
     <ClInclude Include="HitEffect.h" />
-    <ClInclude Include="UI.h" />
+    <ClInclude Include="TimeGauge.h" />
+    <ClInclude Include="DrawEnd.h" />
+    <ClInclude Include="Ui.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
